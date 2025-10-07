@@ -1,7 +1,6 @@
 package web.config;
 
 
-
 import org.hibernate.jpa.HibernatePersistenceProvider;
 import org.hibernate.jpa.boot.internal.EntityManagerFactoryBuilderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,26 +41,26 @@ public class DbConfig {
         return dataSource;
     }
 
-        @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(){
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean() {
         LocalContainerEntityManagerFactoryBean manager = new LocalContainerEntityManagerFactoryBean();
         manager.setDataSource(getDataSource());
-            Properties prop = new Properties();
-            prop.put("org.hibernate.dialect.MySQL8Dialect", environment.getProperty("hibernate.dialect"));
-            prop.put("hibernate.format_sql", environment.getProperty("hibernate.format_sql"));
-            prop.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
-            prop.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
-        manager.setPackagesToScan(new String[] {"web.model"});
+        Properties prop = new Properties();
+        prop.put("org.hibernate.dialect.MySQL8Dialect", environment.getProperty("hibernate.dialect"));
+        prop.put("hibernate.format_sql", environment.getProperty("hibernate.format_sql"));
+        prop.put("hibernate.show_sql", environment.getProperty("hibernate.show_sql"));
+        prop.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
+        manager.setPackagesToScan(new String[]{"web.model"});
         manager.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         manager.setJpaProperties(prop);
         return manager;
 
-        }
+    }
 
-        @Bean
-    public PlatformTransactionManager transactionManager(){
+    @Bean
+    public PlatformTransactionManager transactionManager() {
         JpaTransactionManager manager = new JpaTransactionManager();
         manager.setEntityManagerFactory(entityManagerFactoryBean().getObject());
         return manager;
-        }
+    }
 }

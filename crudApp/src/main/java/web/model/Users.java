@@ -12,7 +12,7 @@ public class Users {
     private long id;
 
 
-    @Column(name= "first_name")
+    @Column(name = "first_name")
     private String firstName;
 
 
@@ -24,50 +24,50 @@ public class Users {
     private int age;
 
 
-    public Users () {
+    public Users() {
     }
 
-    public Users (long id, String firstName, String lastName, int age) {
+    public Users(long id, String firstName, String lastName, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
     }
 
-    public long getId () {
+    public long getId() {
         return id;
     }
 
-    public void setId (long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public String getFirstName () {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName (String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastName () {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName (String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
-    public int getAge () {
+    public int getAge() {
         return age;
     }
 
-    public void setAge (int age) {
+    public void setAge(int age) {
         this.age = age;
     }
 
     @Override
-    public String toString () {
+    public String toString() {
         return "Users{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +

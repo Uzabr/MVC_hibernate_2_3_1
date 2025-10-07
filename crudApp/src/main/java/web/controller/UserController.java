@@ -15,15 +15,15 @@ public class UserController {
     private UserService userService;
 
     @Autowired
-    public void setUserService (UserService userService) {
+    public void setUserService(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/")
-    public String users(ModelMap map){
+    public String users(ModelMap map) {
         map.addAttribute("users", new Users());
         map.addAttribute("userslist", userService.listUsers());
-           return "users";
+        return "users";
     }
 
     @PostMapping(value = "/add")
@@ -42,20 +42,20 @@ public class UserController {
 
 
     @PostMapping("/update")
-    public String showUpdateUsers( @ModelAttribute("users") Users users){
+    public String showUpdateUsers(@ModelAttribute("users") Users users) {
         userService.updateUsers(users);
         return "redirect:/";
     }
 
     @GetMapping("/edit/{id}")
-    public String updateUsers(ModelMap map, @PathVariable("id") long id){
+    public String updateUsers(ModelMap map, @PathVariable("id") long id) {
         map.addAttribute("users", userService.getUsersById(id));
         return "updateUsers";
     }
 
 
     @GetMapping("/remove/{id}")
-    public String removeUsers(@PathVariable("id") long id){
+    public String removeUsers(@PathVariable("id") long id) {
         userService.removeUsers(id);
         return "redirect:/";
     }

@@ -18,29 +18,29 @@ public class WebConfig implements WebMvcConfigurer {
 
     private ApplicationContext context;
 
-    public WebConfig (ApplicationContext context) {
+    public WebConfig(ApplicationContext context) {
         this.context = context;
     }
 
-     @Bean
+    @Bean
     public SpringResourceTemplateResolver templateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
         resolver.setApplicationContext(context);
         resolver.setPrefix("/WEB-INF/pages/");
         resolver.setSuffix(".html");
         return resolver;
-     }
+    }
 
-     @Bean
+    @Bean
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine engine = new SpringTemplateEngine();
         engine.setTemplateResolver(templateResolver());
         engine.setEnableSpringELCompiler(true);
         return engine;
-     }
+    }
 
     @Override
-    public void configureViewResolvers (ViewResolverRegistry registry) {
+    public void configureViewResolvers(ViewResolverRegistry registry) {
         ThymeleafViewResolver thymeleafViewResolver = new ThymeleafViewResolver();
         thymeleafViewResolver.setTemplateEngine(templateEngine());
         registry.viewResolver(thymeleafViewResolver);
