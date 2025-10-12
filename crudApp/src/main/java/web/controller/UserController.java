@@ -4,13 +4,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import web.model.Users;
+import web.model.User;
 import web.service.UserService;
-import web.service.UserServiceImpl;
 
 @Controller
 public class UserController {
-
 
     private UserService userService;
 
@@ -20,29 +18,26 @@ public class UserController {
     }
 
     @GetMapping("/")
-    public String users(ModelMap map) {
-        map.addAttribute("users", new Users());
+    public String getUsers(ModelMap map) {
+        map.addAttribute("users", new User());
         map.addAttribute("userslist", userService.listUsers());
         return "users";
     }
 
     @PostMapping(value = "/add")
-    public String addUsers(@ModelAttribute("users") Users users) {
+    public String addUsers(@ModelAttribute("users") User users) {
         userService.addUsers(users);
         return "redirect:/";
-
     }
 
     @GetMapping("/new")
     public String newUsers(ModelMap map) {
-        Users users = new Users();
-        map.addAttribute("users", users);
+        map.addAttribute("users", new User());
         return "addUsers";
     }
 
-
     @PostMapping("/update")
-    public String showUpdateUsers(@ModelAttribute("users") Users users) {
+    public String showUpdateUsers(@ModelAttribute("users") User users) {
         userService.updateUsers(users);
         return "redirect:/";
     }
@@ -53,8 +48,7 @@ public class UserController {
         return "updateUsers";
     }
 
-
-    @GetMapping("/remove/{id}")
+    @PostMapping("/remove/{id}")
     public String removeUsers(@PathVariable("id") long id) {
         userService.removeUsers(id);
         return "redirect:/";

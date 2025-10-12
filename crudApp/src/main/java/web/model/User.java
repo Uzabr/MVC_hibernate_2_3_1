@@ -4,30 +4,25 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class Users {
+public class User {
 
     @Id
-    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
 
     @Column(name = "first_name")
     private String firstName;
 
-
     @Column(name = "last_name")
     private String lastName;
-
 
     @Column(name = "age")
     private int age;
 
-
-    public Users() {
+    public User() {
     }
 
-    public Users(long id, String firstName, String lastName, int age) {
+    public User(long id, String firstName, String lastName, int age) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
