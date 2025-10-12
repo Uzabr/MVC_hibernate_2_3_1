@@ -13,5 +13,5 @@ public interface UserService {
 
     User getUsersById(long id);
 
-    List<User> listUsers();
+    List<User> getAllUsers();
 }

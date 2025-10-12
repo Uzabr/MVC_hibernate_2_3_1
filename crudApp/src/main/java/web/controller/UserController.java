@@ -20,7 +20,7 @@ public class UserController {
     @GetMapping("/")
     public String getUsers(ModelMap map) {
         map.addAttribute("users", new User());
-        map.addAttribute("userslist", userService.listUsers());
+        map.addAttribute("userslist", userService.getAllUsers());
         return "users";
     }
 

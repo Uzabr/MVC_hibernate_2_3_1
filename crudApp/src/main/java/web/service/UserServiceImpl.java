@@ -42,7 +42,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public List<User> listUsers() {
+    public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }
 }
