@@ -30,12 +30,6 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/new")
-    public String newUsers(ModelMap map) {
-        map.addAttribute("users", new User());
-        return "addUsers";
-    }
-
     @PostMapping("/update")
     public String showUpdateUsers(@ModelAttribute("users") User users) {
         userService.updateUsers(users);
